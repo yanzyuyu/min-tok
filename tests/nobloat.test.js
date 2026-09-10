@@ -112,3 +112,17 @@ test('6. Architecture audit calculates LOC & abstraction ratio', () => {
     fs.rmSync(tmpDir, { recursive: true, force: true });
   }
 });
+
+test('7. Skills auto-installer syncs all 8 skills', async () => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'min-tok-skills-test-'));
+  try {
+    const { installSkills } = await import('../src/installer.js');
+    const result = installSkills(tmpDir);
+    assert.equal(result.success, true);
+    assert.equal(result.totalInstalled, 8);
+    assert.ok(fs.existsSync(path.join(tmpDir, 'human-coding', 'SKILL.md')));
+    assert.ok(fs.existsSync(path.join(tmpDir, 'anti-overengineering', 'SKILL.md')));
+  } finally {
+    fs.rmSync(tmpDir, { recursive: true, force: true });
+  }
+});

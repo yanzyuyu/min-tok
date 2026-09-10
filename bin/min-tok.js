@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 import path from 'node:path';
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { scanProject, printScanReport } from '../src/scanner.js';
 import { auditProject, printAuditReport } from '../src/audit.js';
 import { purgePackage, printPurgeReport } from '../src/purger.js';
 import { createUnifiedDiff, printFormattedDiff } from '../src/diff_guard.js';
+import { installSkills, printInstallReport } from '../src/installer.js';
 import { c, color, readTextSafe } from '../src/utils.js';
 
 const args = process.argv.slice(2);
@@ -22,6 +24,7 @@ ${color('PERINTAH:', c.bold)}
   ${color('audit', c.green)} [path]             Audit rasio over-engineering, tingkat abstraksi & densitas dependensi
   ${color('purge', c.green)} <package> [path]   Refaktor otomatis impor bloat menjadi standard library & hapus dari manifest
   ${color('diff', c.green)} <file1> <file2>     Format unified diff padat untuk menghemat limit token AI
+  ${color('install-skills', c.green)} [path]    Pasang/sinkronkan bundle skills AI secara otomatis ke direktori agent
   ${color('help, --help, -h', c.green)}         Tampilkan panduan bantuan
   ${color('version, -v', c.green)}              Tampilkan versi min-tok
 
@@ -35,11 +38,13 @@ ${color('CONTOH:', c.bold)}
   min-tok purge uuid .
   min-tok purge rimraf .
   min-tok diff old.js new.js
+  min-tok install-skills
 `);
 }
 
 function showVersion() {
-  const pkgPath = path.join(path.dirname(new URL(import.meta.url).pathname), '../package.json');
+  const currentDir = path.dirname(fileURLToPath(import.meta.url));
+  const pkgPath = path.join(currentDir, '../package.json');
   try {
     const raw = fs.readFileSync(pkgPath, 'utf8');
     const parsed = JSON.parse(raw);
@@ -109,6 +114,14 @@ switch (command) {
     }
     const diff = createUnifiedDiff(text1, text2, path.basename(file1));
     printFormattedDiff(diff);
+    break;
+  }
+
+  case 'install-skills':
+  case 'sync-skills': {
+    const target = args.slice(1).find(a => !a.startsWith('--')) || null;
+    const result = installSkills(target);
+    printInstallReport(result);
     break;
   }
 
