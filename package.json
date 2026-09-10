@@ -1,12 +1,12 @@
 {
   "name": "min-tok",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Zero-dependency CLI and Agent Skill to detect bloat libraries, audit over-engineering, auto-purge redundant packages, and enforce token-efficient diffs",
   "type": "module",
   "main": "src/index.js",
   "bin": {
-    "min-tok": "./bin/min-tok.js",
-    "nobloat": "./bin/min-tok.js"
+    "min-tok": "bin/min-tok.js",
+    "nobloat": "bin/min-tok.js"
   },
   "files": [
     "bin",
