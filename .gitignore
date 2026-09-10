@@ -1,0 +1,23 @@
+# Node
+node_modules/
+dist/
+build/
+*.log
+
+# Environment & Secrets
+.env
+.env.local
+*.pem
+*.key
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Agent / Tooling Configuration (Never push internal agent paths)
+.agents/
+.agent/
+_agents/
+_agent/
