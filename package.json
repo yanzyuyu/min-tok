@@ -8,9 +8,24 @@
     "min-tok": "./bin/min-tok.js",
     "nobloat": "./bin/min-tok.js"
   },
+  "files": [
+    "bin",
+    "src",
+    "SKILL.md",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "test": "node --test tests/nobloat.test.js"
+    "test": "node --test tests/**/*.test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yanzyuyu/min-tok.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yanzyuyu/min-tok/issues"
+  },
+  "homepage": "https://github.com/yanzyuyu/min-tok#readme",
   "keywords": [
     "min-tok",
     "anti-overengineering",

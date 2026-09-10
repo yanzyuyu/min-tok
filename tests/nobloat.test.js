@@ -41,13 +41,17 @@ test('3. Scanner detects bloat packages', () => {
     const mockReqs = 'requests==2.31.0\ntabulate>=0.9.0\n';
     fs.writeFileSync(path.join(tmpDir, 'requirements.txt'), mockReqs);
 
+    const mockPyproject = '[project]\nname = "demo"\ndependencies = [\n    "python-dotenv>=1.0.0",\n]\n';
+    fs.writeFileSync(path.join(tmpDir, 'pyproject.toml'), mockPyproject);
+
     const report = scanProject(tmpDir);
-    assert.equal(report.totalBloatFound, 4);
+    assert.equal(report.totalBloatFound, 5);
     const names = report.findings.map(f => f.package);
     assert.ok(names.includes('uuid'));
     assert.ok(names.includes('axios'));
     assert.ok(names.includes('requests'));
     assert.ok(names.includes('tabulate'));
+    assert.ok(names.includes('python-dotenv'));
   } finally {
     fs.rmSync(tmpDir, { recursive: true, force: true });
   }

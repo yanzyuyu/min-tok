@@ -60,6 +60,46 @@ export function scanProject(projectDir = process.cwd()) {
     }
   }
 
+  // 3. Scan pyproject.toml
+  const pyprojectPath = path.join(targetDir, 'pyproject.toml');
+  if (fs.existsSync(pyprojectPath)) {
+    const content = readTextSafe(pyprojectPath);
+    if (content) {
+      const lines = content.split('\n');
+      let inDepsSection = false;
+      for (const rawLine of lines) {
+        const line = rawLine.trim();
+        if (line.startsWith('[') && line.endsWith(']')) {
+          inDepsSection = line.includes('dependencies');
+          continue;
+        }
+        if (line.startsWith('dependencies') && line.includes('=')) {
+          inDepsSection = true;
+        }
+        if (inDepsSection) {
+          const match = line.match(/["']([a-zA-Z0-9_-]+)(?:[=<>~!]?[^"']*)?["']/);
+          if (match) {
+            const depName = match[1].toLowerCase();
+            const bloat = getBloatInfo(depName, 'pypi');
+            if (bloat && !findings.some(f => f.package === depName && f.file === 'pyproject.toml')) {
+              findings.push({
+                ecosystem: 'pypi',
+                file: 'pyproject.toml',
+                package: depName,
+                version: match[0],
+                category: bloat.category,
+                reason: bloat.reason,
+                replacement: bloat.replacement,
+                example: bloat.example || null,
+                canAutoPurge: bloat.canAutoPurge
+              });
+            }
+          }
+        }
+      }
+    }
+  }
+
   return {
     targetDir,
     totalBloatFound: findings.length,
@@ -68,21 +108,21 @@ export function scanProject(projectDir = process.cwd()) {
 }
 
 export function printScanReport(report) {
-  console.log(`\n${color('== NOBLOAT SCAN REPORT ==', c.bold + c.cyan)}`);
+  console.log(`\n${color('== MIN-TOK SCAN REPORT ==', c.bold + c.cyan)}`);
   console.log(`${color('Directory:', c.dim)} ${report.targetDir}`);
   console.log(`${color('Bloat Libraries Found:', c.dim)} ${report.totalBloatFound === 0 ? color('0 (Clean!)', c.green) : color(report.totalBloatFound, c.red + c.bold)}\n`);
 
   if (report.totalBloatFound === 0) {
-    console.log(`${color('✓ Repositori bebas dari bloat library terdaftar. Bagus!', c.green)}`);
+    console.log(`${color('✓ Repositori bebas dari bloat library terdaftar. Ramping & efisien!', c.green)}`);
     return;
   }
 
   for (const item of report.findings) {
-    console.log(`${color('●', c.red)} ${color(item.package, c.bold)} (${item.ecosystem}) [${item.category}]`);
+    console.log(`${color('●', c.red)} ${color(item.package, c.bold)} (${item.ecosystem}) [${item.category}] di ${color(item.file, c.dim)}`);
     console.log(`  ${color('Alasan Bloat:', c.yellow)} ${item.reason}`);
     console.log(`  ${color('Solusi Native:', c.green)} ${item.replacement}`);
     if (item.canAutoPurge) {
-      console.log(`  ${color('Auto-Purgeable:', c.cyan)} Ya (Jalankan: nobloat purge ${item.package})`);
+      console.log(`  ${color('Auto-Purgeable:', c.cyan)} Ya (Jalankan: min-tok purge ${item.package})`);
     }
     console.log('');
   }

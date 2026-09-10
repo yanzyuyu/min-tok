@@ -15,21 +15,26 @@ function showHelp() {
 ${color('min-tok', c.bold + c.cyan)} (alias: ${color('nobloat', c.dim)}) - Zero-Dependency Anti-Over-Engineering & Bloat Eliminator
 
 ${color('PENGGUNAAN:', c.bold)}
-  min-tok <command> [opsi]
+  min-tok <command> [target] [opsi]
 
 ${color('PERINTAH:', c.bold)}
-  ${color('scan', c.green)} [path]              Pindai dependensi bloat di package.json / requirements.txt
+  ${color('scan', c.green)} [path]              Pindai dependensi bloat di package.json / requirements.txt / pyproject.toml
   ${color('audit', c.green)} [path]             Audit rasio over-engineering, tingkat abstraksi & densitas dependensi
   ${color('purge', c.green)} <package> [path]   Refaktor otomatis impor bloat menjadi standard library & hapus dari manifest
   ${color('diff', c.green)} <file1> <file2>     Format unified diff padat untuk menghemat limit token AI
   ${color('help, --help, -h', c.green)}         Tampilkan panduan bantuan
   ${color('version, -v', c.green)}              Tampilkan versi min-tok
 
+${color('OPSI:', c.bold)}
+  ${color('--strict, --ci', c.green)}           Kembalikan exit code 1 jika ditemukan bloat atau skor over-engineering tinggi
+
 ${color('CONTOH:', c.bold)}
   min-tok scan .
+  min-tok scan . --strict
   min-tok audit ./src
   min-tok purge uuid .
   min-tok purge rimraf .
+  min-tok diff old.js new.js
 `);
 }
 
@@ -54,22 +59,24 @@ if (command === 'version' || command === '--version' || command === '-v') {
   process.exit(0);
 }
 
+const isStrict = args.includes('--strict') || args.includes('--ci');
+
 switch (command) {
   case 'scan': {
-    const target = args[1] || '.';
+    const target = args.slice(1).find(a => !a.startsWith('--')) || '.';
     const report = scanProject(target);
     printScanReport(report);
-    if (report.totalBloatFound > 0) {
+    if (isStrict && report.totalBloatFound > 0) {
       process.exit(1);
     }
     break;
   }
 
   case 'audit': {
-    const target = args[1] || '.';
+    const target = args.slice(1).find(a => !a.startsWith('--')) || '.';
     const report = auditProject(target);
     printAuditReport(report);
-    if (report.score >= 60) {
+    if (isStrict && report.score >= 60) {
       process.exit(1);
     }
     break;
@@ -78,7 +85,7 @@ switch (command) {
   case 'purge': {
     const pkgName = args[1];
     const target = args[2] || '.';
-    if (!pkgName) {
+    if (!pkgName || pkgName.startsWith('--')) {
       console.error(color('Kesalahan: Harap tentukan nama paket yang ingin dibersihkan. Contoh: min-tok purge uuid', c.red));
       process.exit(1);
     }
