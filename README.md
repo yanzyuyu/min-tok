@@ -55,4 +55,4 @@ Repositori ini juga berfungsi sebagai AI Agent Skill. Letakkan file `SKILL.md` k
 
 ## Lisensi
 
-MIT
+Didistribusikan di bawah lisensi [Apache-2.0](LICENSE). Lihat file [`LICENSE`](LICENSE) untuk informasi hak cipta dan ketentuan hukum selengkapnya.
