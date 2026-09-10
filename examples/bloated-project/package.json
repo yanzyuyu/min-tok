@@ -1,0 +1,11 @@
+{
+  "name": "bloated-sample-app",
+  "version": "0.0.1",
+  "type": "module",
+  "dependencies": {
+    "uuid": "^9.0.1",
+    "rimraf": "^5.0.5",
+    "axios": "^1.6.2",
+    "is-number": "^7.0.0"
+  }
+}
