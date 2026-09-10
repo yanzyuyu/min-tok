@@ -64,7 +64,7 @@ Sebelum mengusulkan `npm install`, `pip install`, atau menambah dependensi baru,
 
 ### Pillar 1: Proactive De-Bloater (Auto-Purging Legacy Repos)
 Bukan hanya mencegah paket baru, AI aktif membersihkan repositori lama yang sudah telanjur gemuk.
-* Jalankan `min-tok scan .` untuk memindai manifest.
+* Jalankan `min-tok scan .` untuk memindai manifest (`package.json`, `requirements.txt`, `pyproject.toml`).
 * Jalankan `min-tok purge <package>` untuk merefaktor pemanggilan pustaka bloat ke native standar dan menghapus dependensi dari manifest.
 
 ### Pillar 2: The Transitive Blast-Radius Rule
@@ -85,11 +85,11 @@ Bukan hanya mencegah paket baru, AI aktif membersihkan repositori lama yang suda
 ## 4. CLI Commands Reference
 
 ```bash
-# Scan manifest for bloat dependencies
-node bin/min-tok.js scan .
+# Scan manifests for bloat dependencies (supports package.json, requirements.txt, pyproject.toml)
+node bin/min-tok.js scan . [--strict]
 
 # Audit over-engineering score & abstraction density
-node bin/min-tok.js audit .
+node bin/min-tok.js audit . [--strict]
 
 # Automatically purge and refactor bloat package to standard library
 node bin/min-tok.js purge uuid .
