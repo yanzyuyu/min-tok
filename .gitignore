@@ -7,6 +7,7 @@ build/
 # Environment & Secrets
 .env
 .env.local
+.npmrc
 *.pem
 *.key
 
