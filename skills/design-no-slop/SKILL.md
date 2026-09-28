@@ -139,6 +139,21 @@ AI models habitually rely on the same generic Tailwind utility structures and co
 
 ---
 
+## 5. Visual Elevation & Depth: Drop Shadows over Heavy Strokes
+
+* **DROP SHADOW > STROKE (The Human Depth Hierarchy):**
+  * Modern, refined UI creates visual separation through **soft, diffuse ambient drop shadows** (`shadow-sm`, `shadow-md`), not by enclosing every card and section in harsh thick strokes.
+  * For cards, containers, dialogs, and popovers: prioritize natural layered shadows over dark boundary borders.
+* **STROKE RESTRICTION (1px Maximum):**
+  * Never use thick strokes (`border-2`, `border-4`).
+  * If a stroke or border is needed for structural contrast, **it MUST be 1px maximum** (`border` / `border-[1px]`).
+  * Always use soft, low-contrast, harmonious border colors: `border-zinc-200/70`, `border-stone-200/80`, or `border-zinc-800/60` in dark mode.
+* **SHARP BORDER RADIUS (1px to 3px / `rounded-sm`):**
+  * Maintain clean, sharp edges. Maximum border-radius is 1px to 3px (`rounded-sm`).
+  * Absolute ban on pill-shapes (`rounded-full`) for containers, cards, or eyebrow badges.
+
+---
+
 ## 6. TUI (Terminal User Interface) Standards
 
 * **BANNED:** `🚀 Starting...`, `✨ Compiling...`, `══════` double box-drawings, harsh 16-color ANSI neon that burns retinas.
