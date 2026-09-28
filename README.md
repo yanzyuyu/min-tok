@@ -13,7 +13,7 @@
 3. **Multi-Ecosystem:** Mendukung ekosistem **Node.js / TypeScript** (`package.json`), **Python pip** (`requirements.txt`), dan **Python modern** (`pyproject.toml`).
 4. **Auto-Purge Refactoring:** Secara otomatis merefaktor impor dan sintaksis kode dari paket eksternal (seperti `uuid`, `rimraf`, `mkdirp`) menjadi padanan native standar bahasa.
 5. **Token Guard:** Menyediakan format unified diff ringkas untuk memangkas konsumsi token context window AI hingga 70-80%.
-6. **Built-in Agent Skills Suite:** Membawa 19 bundel skill AI berstandar manusia senior yang dapat dipasang secara otomatis ke sistem agen Anda.
+6. **Built-in Agent Skills Suite:** Membawa 20 bundel skill AI berstandar manusia senior yang dapat dipasang secara otomatis ke sistem agen Anda.
 
 ---
 
@@ -24,7 +24,7 @@
 # Pindai repositori untuk mendeteksi bloat
 npx min-tok scan .
 
-# Pasang semua 19 skills AI otomatis ke direktori agen Anda
+# Pasang semua 20 skills AI otomatis ke direktori agen Anda
 npx min-tok install-skills
 ```
 
@@ -42,7 +42,7 @@ node ./bin/min-tok.js purge uuid .
 # Buat unified diff ringkas antara dua file (hemat limit token)
 node ./bin/min-tok.js diff file_lama.js file_baru.js
 
-# Pasang seluruh bundel 19 skills AI secara otomatis
+# Pasang seluruh bundel 20 skills AI secara otomatis
 node ./bin/min-tok.js install-skills
 ```
 
@@ -56,13 +56,13 @@ node ./bin/min-tok.js install-skills
 | `audit [path] [--strict]` | Menghitung Over-Engineering Score berdasarkan LOC, layer abstraksi, dan jumlah dependensi | `min-tok audit ./src` |
 | `purge <pkg> [path]` | Mengubah pemanggilan kode secara otomatis ke native dan menghapus paket dari manifest | `min-tok purge uuid .` |
 | `diff <f1> <f2>` | Menghasilkan unified diff padat tanpa pemborosan token | `min-tok diff old.js new.js` |
-| `install-skills [path]` | Memasang 19 bundel skills AI secara otomatis ke direktori konfigurasi agen | `min-tok install-skills` |
+| `install-skills [path]` | Memasang 20 bundel skills AI secara otomatis ke direktori konfigurasi agen | `min-tok install-skills` |
 
 ---
 
 ## Bundel AI Agent Skills yang Disertakan
 
-Repositori ini memuat 19 skill AI otonom tingkat lanjut di dalam direktori `skills/`:
+Repositori ini memuat 20 skill AI otonom tingkat lanjut di dalam direktori `skills/`:
 
 1. **`academic-scholar`**: Spesialis tugas sekolah, perkuliahan, dan riset ilmiah kurikulum terbaru & sitasi kredibel.
 2. **`agent-mcp-craft`**: Merancang, membangun, dan mengaudit Autonomous AI Agents & MCP Servers.
@@ -70,19 +70,20 @@ Repositori ini memuat 19 skill AI otonom tingkat lanjut di dalam direktori `skil
 4. **`api-security-reviewer`**: Audit kode dan perancangan sistem backend zero-trust security.
 5. **`data-verify`**: Rekonsiliasi data lintas database dan push-down cryptographic hashing.
 6. **`deep-researcher`**: Investigasi mendalam multi-sumber, triangulasi data faktual (Rule of 3), dan cross-verification.
-7. **`design-no-slop`**: Menghilangkan AI design slop dari Web, GUI, dan TUI (anti-pill badge, tipografi domain-matched).
+7. **`design-no-slop`**: Menghilangkan AI design slop dari Web, GUI, dan TUI (anti-pill badge, tipografi domain-matched, ambient drop shadows over strokes).
 8. **`enterprise-team`**: Lean Multi-Agent & Orchestration Protocol (Solo-First by default).
 9. **`git-craft`**: Git hygiene pragmatis, penulisan commit human-style, dan pencegahan kebocoran kredensial/token agen.
 10. **`human-coding`**: Standar pemrograman senior manusia (100% comment-free, zero-trust API security, anti-BOLA/IDOR).
 11. **`laravel-architect`**: Enterprise Laravel & modern PHP architecture (Laravel 11/12+).
 12. **`markdown-doc`**: Dokumentasi teknis visual berdampak tinggi tanpa emoji atau marketing buzzwords klise.
 13. **`modern-stack-horizon`**: Standar web dan software engineering generasi terbaru (React 19+, Next.js 15+, Tailwind v4+, Vite 6+).
-14. **`omni-pilot`**: Autonomous system orchestration, desktop embodiment, pixel-level OS control.
-15. **`perf-benchmark`**: Benchmarking throughput tinggi tanpa dependensi eksternal.
-16. **`python-bug-fixer`**: Analisis deterministik dan perbaikan bug proyek Python.
-17. **`react-ui-architect`**: Arsitektur antarmuka React/Next.js/Vite responsif dan modular.
-18. **`typescript-node`**: Standar TypeScript strict & modern Node.js backend architecture.
-19. **`tyw-audit`**: Autonomous Universal Software Quality, Resilience & Security auditor.
+14. **`modern-web-guidance`**: Arsitektur web modern, zero-slop UI/UX, ambient drop shadow depth (stroke max 1px), sharp radius, dan native platform standards.
+15. **`omni-pilot`**: Autonomous system orchestration, desktop embodiment, pixel-level OS control.
+16. **`perf-benchmark`**: Benchmarking throughput tinggi tanpa dependensi eksternal.
+17. **`python-bug-fixer`**: Analisis deterministik dan perbaikan bug proyek Python.
+18. **`react-ui-architect`**: Arsitektur antarmuka React/Next.js/Vite responsif dan modular.
+19. **`typescript-node`**: Standar TypeScript strict & modern Node.js backend architecture.
+20. **`tyw-audit`**: Autonomous Universal Software Quality, Resilience & Security auditor.
 
 ### Cara Memasang Skills:
 * **Otomatis (Direkomendasikan):** Jalankan `npx min-tok install-skills`. Tool akan mendeteksi `~/.gemini/config/skills` atau `~/.agents/skills` dan menyinkronkan semuanya secara instan.
