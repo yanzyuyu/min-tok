@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 654 754" width="654" height="754">
+  <defs>
+    <linearGradient id="bg_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d1117" />
+      <stop offset="100%" stop-color="#161b22" />
+    </linearGradient>
+  </defs>
+  <style>
+    .terminal-text { font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Menlo, Monaco, Consolas, monospace; font-size: 13px; fill: #c9d1d9; }
+    .title-text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; fill: #8b949e; font-weight: 500; }
+    .prompt { fill: #58a6ff; font-weight: bold; }
+    .cmd-text { fill: #f0f6fc; font-weight: bold; }
+  </style>
+  <rect x="0" y="0" width="654" height="754" rx="10" fill="url(#bg_grad)" stroke="#30363d" stroke-width="1.5" />
+  <circle cx="20" cy="20" r="6" fill="#ff5f56" />
+  <circle cx="40" cy="20" r="6" fill="#ffbd2e" />
+  <circle cx="60" cy="20" r="6" fill="#27c93f" />
+  <text x="327.0" y="24" text-anchor="middle" class="title-text">min-tok — live test &amp; architecture audit</text>
+  <line x1="0" y1="38" x2="654" y2="38" stroke="#30363d" stroke-width="1" />
+  <text x="24" y="56" class="terminal-text"><tspan class="prompt">$ </tspan><tspan class="cmd-text">bash -c npm test &amp;&amp; echo &#x27;&#x27; &amp;&amp; node bin/min-tok.js audit .</tspan></text>
+  <text x="24" y="78" class="terminal-text"></text>
+  <text x="24" y="98" class="terminal-text"><tspan>&gt; min-tok@1.2.0 test</tspan></text>
+  <text x="24" y="118" class="terminal-text"><tspan>&gt; node --test tests/**/*.test.js</tspan></text>
+  <text x="24" y="138" class="terminal-text"></text>
+  <text x="24" y="158" class="terminal-text"><tspan fill="#7ee787">✔ 1. Zero-dependency integrity check </tspan><tspan fill="#8b949e">(0.980272ms)</tspan></text>
+  <text x="24" y="178" class="terminal-text"><tspan fill="#7ee787">✔ 2. Bloat catalog inspection </tspan><tspan fill="#8b949e">(0.220589ms)</tspan></text>
+  <text x="24" y="198" class="terminal-text"><tspan fill="#7ee787">✔ 3. Scanner detects bloat packages </tspan><tspan fill="#8b949e">(0.783411ms)</tspan></text>
+  <text x="24" y="218" class="terminal-text"><tspan fill="#7ee787">✔ 4. Purger refactors uuid into native crypto.randomUUID() </tspan><tspan fill="#8b949e">(1.068761ms)</tspan></text>
+  <text x="24" y="238" class="terminal-text"><tspan fill="#7ee787">✔ 5. Diff guard produces unified diff </tspan><tspan fill="#8b949e">(0.154786ms)</tspan></text>
+  <text x="24" y="258" class="terminal-text"><tspan fill="#7ee787">✔ 6. Architecture audit calculates LOC &amp; abstraction ratio </tspan><tspan fill="#8b949e">(0.45507ms)</tspan></text>
+  <text x="24" y="278" class="terminal-text"><tspan fill="#7ee787">✔ 7. Skills auto-installer syncs all 21 skills </tspan><tspan fill="#8b949e">(3.793158ms)</tspan></text>
+  <text x="24" y="298" class="terminal-text"><tspan fill="#58a6ff">ℹ tests 7</tspan></text>
+  <text x="24" y="318" class="terminal-text"><tspan fill="#58a6ff">ℹ suites 0</tspan></text>
+  <text x="24" y="338" class="terminal-text"><tspan fill="#58a6ff">ℹ pass 7</tspan></text>
+  <text x="24" y="358" class="terminal-text"><tspan fill="#58a6ff">ℹ fail 0</tspan></text>
+  <text x="24" y="378" class="terminal-text"><tspan fill="#58a6ff">ℹ cancelled 0</tspan></text>
+  <text x="24" y="398" class="terminal-text"><tspan fill="#58a6ff">ℹ skipped 0</tspan></text>
+  <text x="24" y="418" class="terminal-text"><tspan fill="#58a6ff">ℹ todo 0</tspan></text>
+  <text x="24" y="438" class="terminal-text"><tspan fill="#58a6ff">ℹ duration_ms 50.338136</tspan></text>
+  <text x="24" y="458" class="terminal-text"></text>
+  <text x="24" y="478" class="terminal-text"></text>
+  <text x="24" y="498" class="terminal-text"><tspan fill="#79c0ff" font-weight="bold">== NOBLOAT ARCHITECTURE AUDIT ==</tspan></text>
+  <text x="24" y="518" class="terminal-text"><tspan>Directory:</tspan><tspan> /home/royyan/.gemini/antigravity/scratch/min-tok</tspan></text>
+  <text x="24" y="538" class="terminal-text"><tspan>Source Files:</tspan><tspan> 20</tspan></text>
+  <text x="24" y="558" class="terminal-text"><tspan>Lines of Code (LOC):</tspan><tspan> 1324</tspan></text>
+  <text x="24" y="578" class="terminal-text"><tspan>Abstraction Layers:</tspan><tspan> 3 file(s)</tspan></text>
+  <text x="24" y="598" class="terminal-text"><tspan>Production Deps:</tspan><tspan> 0 paket</tspan></text>
+  <text x="24" y="618" class="terminal-text"><tspan>Dev Deps:</tspan><tspan> 0 paket</tspan></text>
+  <text x="24" y="638" class="terminal-text"><tspan font-weight="bold">Over-Engineering Score:</tspan><tspan> </tspan><tspan fill="#7ee787">0/100</tspan><tspan> -&gt; [</tspan><tspan fill="#7ee787">LEAN &amp; PRAGMATIC</tspan><tspan>]</tspan></text>
+  <text x="24" y="658" class="terminal-text"></text>
+  <text x="24" y="678" class="terminal-text"><tspan fill="#7ee787">✓ Arsitektur kode tergolong ramping, fungsional, dan proporsional.</tspan></text>
+  <text x="24" y="698" class="terminal-text"></text>
+  <text x="24" y="718" class="terminal-text"></text>
+</svg>

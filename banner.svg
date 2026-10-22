@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 240" width="900" height="240">
+  <defs>
+    <linearGradient id="bg_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060913" />
+      <stop offset="50%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <radialGradient id="mesh_left" cx="15%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="mesh_right" cx="85%" cy="75%" r="45%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0" />
+    </radialGradient>
+
+    <linearGradient id="emblem_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <filter id="subtle_shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#ffffff" stroke-opacity="0.02" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <rect width="900" height="240" rx="16" fill="url(#bg_grad)" stroke="#1e293b" stroke-width="1.2" />
+  <rect width="900" height="240" rx="16" fill="url(#grid)" />
+
+  <circle cx="120" cy="110" r="140" fill="url(#mesh_left)" />
+  <circle cx="780" cy="180" r="160" fill="url(#mesh_right)" />
+
+  <g transform="translate(68, 62)">
+    <circle cx="58" cy="58" r="54" fill="none" stroke="#06b6d4" stroke-opacity="0.2" stroke-width="1.5" stroke-dasharray="4 4" />
+    <circle cx="58" cy="58" r="44" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#subtle_shadow)" />
+    <path d="M 58 26 L 82 38 C 82 64 68 80 58 86 C 48 80 34 64 34 38 Z" fill="url(#emblem_grad)" />
+    <path d="M 50 56 L 56 62 L 68 48" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <g transform="translate(225, 88)">
+    <text x="0" y="24" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, sans-serif" font-size="38" font-weight="800" letter-spacing="-0.03em">
+      min-tok
+    </text>
+
+    <text x="0" y="55" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, sans-serif" font-size="14.5" font-weight="450" letter-spacing="-0.01em">
+      Zero-Dependency Anti-Overengineering Engine, Token Shield &amp; Agent Skills Suite
+    </text>
+
+    <g transform="translate(0, 78)">
+      <rect x="0.0" y="0" width="136.5" height="24" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1" /><text x="68.2" y="16" fill="#f43f5e" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, monospace" font-size="11" font-weight="600" text-anchor="middle">ZERO DEPENDENCY</text>
+      <rect x="144.5" y="0" width="114.0" height="24" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1" /><text x="201.5" y="16" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, monospace" font-size="11" font-weight="600" text-anchor="middle">TOKEN SHIELD</text>
+      <rect x="266.5" y="0" width="136.5" height="24" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1" /><text x="334.8" y="16" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, monospace" font-size="11" font-weight="600" text-anchor="middle">21 AGENT SKILLS</text>
+      <rect x="411.0" y="0" width="151.5" height="24" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1" /><text x="486.8" y="16" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, monospace" font-size="11" font-weight="600" text-anchor="middle">LEAN ARCHITECTURE</text>
+      <rect x="570.5" y="0" width="144.0" height="24" rx="6" fill="#161b22" stroke="#30363d" stroke-width="1" /><text x="642.5" y="16" fill="#a855f7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, monospace" font-size="11" font-weight="600" text-anchor="middle">100% CLEAN AUDIT</text>
+    </g>
+  </g>
+</svg>

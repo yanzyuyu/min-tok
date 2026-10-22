@@ -17,6 +17,13 @@ Thumbs.db
 .vscode/
 .idea/
 
+# Python & Test Caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+coverage/
+.nyc_output/
+
 # Agent / Tooling Configuration (Never push internal agent paths)
 .agents/
 .agent/

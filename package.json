@@ -38,7 +38,7 @@
     "standard-library",
     "purge-dependencies"
   ],
-  "author": "yanzyu",
+  "author": "yanzyuyu <stockrii800@gmail.com>",
   "license": "Apache-2.0",
   "engines": {
     "node": ">=18.0.0"

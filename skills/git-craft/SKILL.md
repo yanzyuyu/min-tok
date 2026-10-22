@@ -100,3 +100,54 @@ _agent/
 On Windows environments:
 * Be aware of CRLF vs LF warnings. Use `git config core.autocrlf true` (or standard repo `.gitattributes`).
 * Always verify that files committed on Windows don't introduce encoding artifacts into Unix/CI environments.
+
+---
+
+## 5. GitHub Account & Commit Author Verification
+
+Before creating commits in any project:
+1. Verify the active authenticated GitHub identity:
+   ```bash
+   gh api user --jq '{login: .login, email: .email}'
+   ```
+2. Ensure repository `user.name` and `user.email` match that identity:
+   ```bash
+   git config user.name "<github_login>"
+   git config user.email "<github_email>"
+   ```
+   This ensures that all commits pushed to GitHub link directly to the user's verified profile and avatar, avoiding disconnected generic silhouettes.
+
+---
+
+## 6. Mandatory Repository Documentation Gate (README & Assets)
+
+Before pushing the initial commit or publishing any public repository:
+1. **Verify `README.md` Compliance:**
+   * The project must have a production-grade `README.md` based on `markdown-doc/SKILL.md` or templates in `~/.gemini/config/skills/markdown-doc/templates/`.
+   * **Mandatory Hero Banner:** Must include an aesthetic dark-mode vector SVG banner (`banner.svg`) at the repository root, centered at the top.
+   * **Mandatory Badges:** Minimum 5 centered Shields.io badges immediately below the hero banner (Runtime, Release, Domain Metric, Dependencies, Test Suite/Audit, License).
+   * **Mandatory Visual Proof:** Must include a dark-mode vector SVG terminal demo (`terminal_demo.svg`) for CLI/backend tools or a clean UI snapshot for web apps, saved directly at the repository root.
+   * **Mandatory Vector Back-to-Top:** Navigation links at section ends must use the dark-mode vector SVG button (`▲ Back to Top`).
+   * **Zero AI Marketing Slop:** Strict ban on emojis in headings and marketing hype.
+2. **Verify License File:**
+   * Every public repository must have a root `LICENSE` file (MIT, Apache-2.0, etc.) with the correct copyright holder.
+
+---
+
+## 7. Semantic Versioning & GitHub Releases
+
+Never leave a GitHub repository homepage with an empty "Releases" sidebar:
+1. Tag commits using Semantic Versioning (`v1.0.0`, `v1.1.0`, etc.):
+   ```bash
+   git tag -a v1.0.0 -m "v1.0.0: initial production release"
+   git push origin v1.0.0
+   ```
+2. Create an official release via GitHub CLI:
+   ```bash
+   gh release create v1.0.0 --title "v1.0.0: Initial Production Release" --notes-file RELEASE_NOTES.md
+   ```
+3. Set the repository metadata:
+   ```bash
+   gh repo edit --description "<Precise technical summary>"
+   gh repo edit --add-topic "<topic1>" --add-topic "<topic2>"
+   ```
